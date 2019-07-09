@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage BackgroundColor="White" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:pagesanimation="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+         
+             x:Class="iReminder.Views.MyReminderPage">
+
+
+   
+
+    <AbsoluteLayout>
+
+        <ContentView IsVisible="False" BackgroundColor="White" x:Name="EmptyCV" 
+                    AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Image x:Name="todo" Source="Todo.jpg" Aspect="AspectFit" Margin="10,0,10,0"></Image>
+                <Label Text="No Reminders in here!" Style="{StaticResource GeneralLabelStyle}"  
+                       HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="20" Margin="0,5,0,0"></Label>
+                <Button Text="Create a Reminder now!" Style="{StaticResource ButtonStyle}"></Button>
+            </StackLayout>
+
+        </ContentView>
+
+
+
+        <ContentView x:Name="OtherCV" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+
+            <StackLayout Margin="5,0,5,0">
+
+                <StackLayout BackgroundColor="White" Margin="10" Padding="10">
+                        <Label BackgroundColor="White" Text="Hey Buddy!" FontAttributes="Bold" FontSize="30" 
+                      TextColor="Gray"></Label>
+                        <BoxView x:Name="LineBoxView" HeightRequest="1" Color="LightGray"></BoxView>
+                    <ListView></ListView>
+
+
+                    </StackLayout>
+                    <Button BackgroundColor="Black" Text="Create a new Reminder!" TextColor="White" VerticalOptions="End" Clicked="NewReminderClicked"></Button>
+
+
+                </StackLayout>
+         
+         
+                    
+           
+              
+
+               
+           
+
+
+
+
+        </ContentView>
+
+
+
+
+    </AbsoluteLayout>
+    
+    
+    
+    
+    
+
+    <!--<RelativeLayout>
+
+        <ContentView IsVisible="False" BackgroundColor="White" x:Name="EmptyCV" 
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0,Constant=0}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Image x:Name="todo" Source="Todo.jpg" Aspect="AspectFit" Margin="10,0,10,0"></Image>
+                <Label Text="No Reminders in here!" Style="{StaticResource GeneralLabelStyle}"  
+                       HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="20" Margin="0,5,0,0"></Label>
+                <Button Text="Create a Reminder now!" Style="{StaticResource ButtonStyle}"></Button>
+            </StackLayout>
+
+        </ContentView>
+        
+        
+        
+        
+
+        <ContentView x:Name="OtherCV"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0,Constant=0}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+            
+            <RelativeLayout Margin="20">
+                <StackLayout BackgroundColor="White" Margin="10" Padding="10">
+                    <Label BackgroundColor="White" Text="Hey Buddy!" FontAttributes="Bold" FontSize="30" 
+                      TextColor="Gray"></Label>
+                    <BoxView x:Name="LineBoxView" HeightRequest="1" Color="LightGray"></BoxView>
+
+                    <ListView></ListView>
+
+                </StackLayout>
+
+
+                <fab:FloatingActionButton ImageSource="pluss.png" ButtonColor="Black"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Y,Factor=0,Constant=500}"
+                                          RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=X, Factor=0,Constant=300}"
+                                          ></fab:FloatingActionButton>
+            </RelativeLayout>
+
+
+          
+
+        </ContentView>
+
+
+
+    </RelativeLayout>-->
+
+
+
+
+
+</ContentPage>

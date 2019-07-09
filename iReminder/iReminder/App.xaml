@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             x:Class="iReminder.App">
+    <Application.Resources>
+        
+        <ResourceDictionary>
+
+            <Style x:Key="GeneralLabelStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="Candarai.ttf#Candarai"></Setter>
+            </Style>
+
+
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="BackgroundColor" Value="Black"></Setter>
+                <Setter Property="Margin" Value="20"></Setter>
+                <Setter Property="FontSize" Value="Small"></Setter>
+                <Setter Property="CornerRadius" Value="20"></Setter>
+                <Setter Property="FontFamily" Value="Candarai.ttf#Candarai"></Setter>
+            </Style>
+
+            <Style x:Key="LoginEntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="PlaceholderColor" Value="White"></Setter>
+                <Setter Property="Margin" Value="20,20,20,0"></Setter>
+                <Setter Property="FontSize" Value="Large"></Setter>
+                <Setter Property="FontFamily" Value="Candarai.ttf#Candarai"></Setter>
+            </Style>
+
+        </ResourceDictionary>
+        
+    </Application.Resources>
+</Application>

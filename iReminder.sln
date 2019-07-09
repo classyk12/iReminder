@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iReminder.Android", "iReminder\iReminder.Android\iReminder.Android.csproj", "{F62A5EF5-873C-41A6-BD5F-2A714FFC1D19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iReminder", "iReminder\iReminder\iReminder.csproj", "{C68D9BF1-AA9D-4C5C-A2FF-336B90FC95D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F62A5EF5-873C-41A6-BD5F-2A714FFC1D19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62A5EF5-873C-41A6-BD5F-2A714FFC1D19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62A5EF5-873C-41A6-BD5F-2A714FFC1D19}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F62A5EF5-873C-41A6-BD5F-2A714FFC1D19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62A5EF5-873C-41A6-BD5F-2A714FFC1D19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62A5EF5-873C-41A6-BD5F-2A714FFC1D19}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C68D9BF1-AA9D-4C5C-A2FF-336B90FC95D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C68D9BF1-AA9D-4C5C-A2FF-336B90FC95D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C68D9BF1-AA9D-4C5C-A2FF-336B90FC95D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C68D9BF1-AA9D-4C5C-A2FF-336B90FC95D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6BDE99A9-045B-4A1B-AB38-30764C14CD3F}
+	EndGlobalSection
+EndGlobal

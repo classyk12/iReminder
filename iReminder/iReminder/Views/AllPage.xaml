@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage NavigationPage.HasNavigationBar="False" BackgroundColor="White" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:iReminder.Views"
+            xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+            xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="iReminder.Views.AllPage">
+  <!--Pages can be added as references or inline-->
+
+    <local:MyReminderPage Title="My Reminders" IconImageSource="alarm.png"></local:MyReminderPage>
+
+
+    <local:ActiveReminderPage Title="Active Reminders" IconImageSource="flash.png"></local:ActiveReminderPage>
+
+    
+    <local:UserSettingsPage Title="Settings" IconImageSource="gears.png"></local:UserSettingsPage>
+    
+  
+  
+</TabbedPage>

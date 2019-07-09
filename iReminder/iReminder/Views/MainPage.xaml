@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage NavigationPage.HasNavigationBar="False" BackgroundColor="White" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:Xfxcontrol="clr-namespace:Xfx;assembly=Xfx.Controls"
+             xmlns:behaviors="clr-namespace:iReminder.Behaviors"
+            
+             xmlns:local="clr-namespace:iReminder"
+             x:Class="iReminder.MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="SuccessLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="LightGreen"></Setter>
+                <Setter Property="FontAttributes" Value="Italic"></Setter>
+                <Setter Property="FontSize" Value="Medium"></Setter>
+                <Setter Property="FontFamily" Value="Candarai.ttf#Candarai"></Setter>
+            </Style>
+
+            
+
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <RelativeLayout>
+
+        <Image Source="Reminder.jpg" RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0,Constant=0}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+        </Image>
+
+        <BoxView BackgroundColor="Black" Opacity="0.95"  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0,Constant=0}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+        </BoxView>
+
+
+        <StackLayout x:Name="TotalStackLayout"  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Y,Factor=0,Constant=250}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}">
+
+            <Xfxcontrol:XfxEntry x:Name="signUpEntry" Style="{StaticResource LoginEntryStyle}" HeightRequest="50"
+                             Placeholder="Enter your name" ActivePlaceholderColor="White" TextChanged="SignUpTextChanged">
+            </Xfxcontrol:XfxEntry>
+
+            <StackLayout x:Name="SuccessSL" Orientation="Horizontal" Spacing="5" Margin="20,0,20,20" IsVisible="False">
+                <Image Source="done1.png" WidthRequest="30" HeightRequest="30"></Image>
+                <Label x:Name="SuccessLbl" Style="{StaticResource SuccessLabel}" HorizontalOptions="Center"></Label>
+            </StackLayout>
+
+            <Button x:Name="SignupButton" IsEnabled="False" Text="Lets go!" Style="{StaticResource ButtonStyle}" Clicked="SignUpClicked"></Button>
+
+        </StackLayout>
+       
+
+    
+
+
+    </RelativeLayout>
+</ContentPage>
