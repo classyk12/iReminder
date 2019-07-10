@@ -1,5 +1,10 @@
-﻿using iReminder.Views;
+﻿
+using iReminder.DBServices;
+using iReminder.Interfaces;
+using iReminder.Models;
+using iReminder.Views;
 using Rg.Plugins.Popup.Services;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +15,18 @@ using Xamarin.Forms;
 
 namespace iReminder
 {
+   
     public partial class MainPage : ContentPage
     {
-       
-
+        private Controllers controller = new Controllers();
+        private SQLiteAsyncConnection conn; 
+        
         public MainPage()
         {
             InitializeComponent();
-
-          
+            conn = DependencyService.Get<IReminder>().Connection();
             
+           
         }
 
       
@@ -27,6 +34,7 @@ namespace iReminder
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+           await conn.CreateTableAsync<UserModel>();
             await signUpEntry.TranslateTo(100, 0, 1500, Easing.BounceIn);
         }
 
@@ -56,8 +64,21 @@ namespace iReminder
 
         private async void SignUpClicked(object sender, EventArgs e)
         {
-            Navigation.InsertPageBefore(new AllPage(), this);
-            await Navigation.PopAsync();
+            var user = new UserModel
+            {
+              
+                Username = signUpEntry.Text
+            };
+
+            var action =  controller.RegisterUser(user);
+            
+                DependencyService.Get<IToast>().ShowMessage("User created successfully!");
+                Navigation.InsertPageBefore(new AllPage(), this);
+                await Navigation.PopAsync();
+                Settings.UserName = signUpEntry.Text;
+            
+          
+           
         }
     }
 }

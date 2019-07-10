@@ -2,7 +2,7 @@
 <ContentPage NavigationPage.HasNavigationBar="False" BackgroundColor="White" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:Xfxcontrol="clr-namespace:Xfx;assembly=Xfx.Controls"
-             xmlns:behaviors="clr-namespace:iReminder.Behaviors"
+             
             
              xmlns:local="clr-namespace:iReminder"
              x:Class="iReminder.MainPage">
