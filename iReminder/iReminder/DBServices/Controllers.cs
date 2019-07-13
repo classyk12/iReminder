@@ -27,12 +27,25 @@ namespace iReminder.DBServices
             
         }
 
-        //used to create user reminder object6
-        public async Task<bool> AddReminder(Reminder reminder)
+        //used to update a user info
+        public async Task UpdateUser(UserModel user)
         {
-            await dbconnection.CreateTableAsync<Reminder>();
+            await dbconnection.UpdateAsync(user);
+        }
+
+        //used to drop all table and delete all user settings
+        public async Task DeleteAcount()
+        {
+            await dbconnection.DropTableAsync<Reminder>();
+            await dbconnection.DropTableAsync<UserModel>();
+        }
+
+        //used to create user reminder object6
+        public async Task AddReminder(Reminder reminder)
+        {
+          
             await dbconnection.InsertAsync(reminder);
-            return true;
+            
         }
         
         //checks if the Reminder table is empty or not and peform an action
@@ -66,17 +79,17 @@ namespace iReminder.DBServices
         }
 
         //deletes a reminder object from the database
-        public async Task<bool> DeleteReminder(int id)
+        public async Task DeleteReminder(int id)
         {
             var action = await dbconnection.DeleteAsync(id);
-            return true;
+            
         }
 
         //updates a reminder object in the database
-        public async Task<bool> UpdateReminder(Reminder reminder )
+        public async Task UpdateReminder(Reminder reminder )
         {
             var allreminder = await dbconnection.UpdateAsync(reminder);
-            return true;
+          
         }
 
     }

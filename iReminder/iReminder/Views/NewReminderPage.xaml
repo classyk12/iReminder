@@ -33,6 +33,17 @@
                 <ListView.Header>
                     <Button Text="Add Tasks!" Margin="0" HorizontalOptions="Start" Style="{StaticResource ButtonStyle}" Clicked="AddTaskAction"></Button>
                 </ListView.Header>
+
+                <!--<ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Label Text="{Binding Things}" Style="{StaticResource ListViewStyle}"></Label>
+                                
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>-->
             </ListView>
 
             <Button Text="Create this Reminder!" Style="{StaticResource ButtonStyle}"></Button>

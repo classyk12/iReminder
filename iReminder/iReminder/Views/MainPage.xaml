@@ -38,7 +38,7 @@
         <StackLayout x:Name="TotalStackLayout"  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Y,Factor=0,Constant=250}"
                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=1,Constant=0}">
 
-            <Xfxcontrol:XfxEntry x:Name="signUpEntry" Style="{StaticResource LoginEntryStyle}" HeightRequest="50"
+            <Xfxcontrol:XfxEntry x:Name="signUpEntry" Style="{StaticResource LoginEntryStyle}" HeightRequest="80"
                              Placeholder="Enter your name" ActivePlaceholderColor="White" TextChanged="SignUpTextChanged">
             </Xfxcontrol:XfxEntry>
 

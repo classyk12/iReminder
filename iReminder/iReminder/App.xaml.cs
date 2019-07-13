@@ -1,4 +1,4 @@
-﻿
+﻿using iReminder.DBServices;
 using iReminder.Views;
 using System;
 using Xamarin.Forms;
@@ -13,8 +13,16 @@ namespace iReminder
         {
             InitializeComponent();
 
+            if(string.IsNullOrEmpty(Settings.UserName))
+            {
+                MainPage = new NavigationPage(new MainPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new AllPage());
+            }
 
-            MainPage = new NavigationPage(new MainPage());
+           
         }
 
         protected override void OnStart()

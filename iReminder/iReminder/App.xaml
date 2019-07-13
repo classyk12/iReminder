@@ -11,7 +11,20 @@
             <Setter Property="FontFamily" Value="Candarai.ttf#Candarai"></Setter>
             </Style>
 
+            <Style x:Key="ListViewStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Candarai.ttf#Candarai"></Setter>
+                <Setter Property="FontSize" Value="Medium"></Setter>
+                <Setter Property="TextColor" Value="Black"></Setter>
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"></Setter>
+            </Style>
 
+
+            <Style x:Key="ButtonStyle2" TargetType="Button">
+               
+                <Setter Property="FontFamily" Value="Candarai.ttf#Candarai"></Setter>
+            </Style>
+            
+            
             <Style x:Key="ButtonStyle" TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="BackgroundColor" Value="Black"></Setter>
@@ -25,6 +38,14 @@
                 <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="PlaceholderColor" Value="White"></Setter>
                 <Setter Property="Margin" Value="20,20,20,0"></Setter>
+                <Setter Property="FontSize" Value="Large"></Setter>
+                <Setter Property="FontFamily" Value="Candarai.ttf#Candarai"></Setter>
+            </Style>
+
+            <Style x:Key="GlobalEntry" TargetType="Entry">
+                <Setter Property="TextColor" Value="Black"></Setter>
+                <Setter Property="PlaceholderColor" Value="Gray"></Setter>
+                
                 <Setter Property="FontSize" Value="Large"></Setter>
                 <Setter Property="FontFamily" Value="Candarai.ttf#Candarai"></Setter>
             </Style>

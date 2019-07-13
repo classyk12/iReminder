@@ -24,9 +24,7 @@ namespace iReminder
         public MainPage()
         {
             InitializeComponent();
-            conn = DependencyService.Get<IReminder>().Connection();
-            
-           
+            conn = DependencyService.Get<IReminder>().Connection();       
         }
 
       
@@ -35,6 +33,7 @@ namespace iReminder
         {
             base.OnAppearing();
            await conn.CreateTableAsync<UserModel>();
+           
             await signUpEntry.TranslateTo(100, 0, 1500, Easing.BounceIn);
         }
 
@@ -71,9 +70,9 @@ namespace iReminder
             };
 
             var action =  controller.RegisterUser(user);
-            
-                DependencyService.Get<IToast>().ShowMessage("User created successfully!");
-                Navigation.InsertPageBefore(new AllPage(), this);
+
+            DependencyService.Get<IToast>().ShowMessage("User created successfully!");
+            Navigation.InsertPageBefore(new AllPage(), this);
                 await Navigation.PopAsync();
                 Settings.UserName = signUpEntry.Text;
             

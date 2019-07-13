@@ -28,9 +28,23 @@
             
             <Editor BackgroundColor="White" IsSpellCheckEnabled="True" IsTextPredictionEnabled="True" TextColor="Gray" Margin="0"></Editor>
             <Button Text="Add task to list!" Style="{StaticResource ButtonStyle}" Margin="0" HorizontalOptions="Start"></Button>
+            
 
-            <ListView BackgroundColor="White"></ListView>
+            <ListView BackgroundColor="White">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Label Text="{Binding Things}" Style="{StaticResource ListViewStyle}"></Label>
+                                <Image HorizontalOptions="End" Source="close.png"></Image>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+           
 
+            
             <Button Text="Add tasks to Reminder!" Style="{StaticResource ButtonStyle}" ></Button>
 
         </StackLayout>
