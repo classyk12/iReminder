@@ -21,28 +21,35 @@ namespace iReminder.Views
 			InitializeComponent ();
 		}
 
+        protected  override void OnAppearing()
+        {
+            changebtn.IsEnabled = false;
+            base.OnAppearing();
+        }
+
         private async  void UpdateName(object sender, EventArgs e)
         {                    
-            await EditSL.FadeTo(1, 1000, Easing.Linear);
+            await EditSL.FadeTo(1, 500, Easing.Linear);
             editbtn.IsEnabled = false;
             deletebtn.IsEnabled = false;
         }
 
         private async void DiscardChanges(object sender, EventArgs e)
         {
-            await EditSL.FadeTo(0, 1000, Easing.Linear);
+            await EditSL.FadeTo(0, 500, Easing.Linear);
             editbtn.IsEnabled = true;
             deletebtn.IsEnabled = true;
         }
 
         private async void UpdateUser(object sender, EventArgs e)
         {
+            
             var user = new UserModel { Username = EditUsername.Text };
             await controller.UpdateUser(user);
             Settings.UserName = EditUsername.Text;
             EditUsername.Text = "";
             DependencyService.Get<IToast>().ShowMessage("All done boss!");
-            await EditSL.FadeTo(0, 1000, Easing.Linear);
+            await EditSL.FadeTo(0, 500, Easing.Linear);
             editbtn.IsEnabled = true;
             deletebtn.IsEnabled = true;
 
@@ -69,7 +76,7 @@ namespace iReminder.Views
             {
                 await controller.DeleteAcount();
                 Settings.UserName = "";
-                Application.Current.MainPage = new MainPage();
+                Application.Current.MainPage = new NavigationPage(new MainPage());
               
 
             }

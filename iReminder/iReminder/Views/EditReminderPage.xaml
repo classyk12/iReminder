@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage BackgroundColor="White" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="iReminder.Views.EditReminderPage"
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-                 xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-             x:Class="iReminder.Views.NewReminderPage">
+                 xmlns:xfx="clr-namespace:Xfx;assembly=Xfx.Controls"
+                 xmlns:inputkit="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit">
 
     <pages:PopupPage.Animation>
         <animations:FadeAnimation 
@@ -15,7 +16,7 @@
 
         <ContentView Opacity="0" IsVisible="False" x:Name="AddTaskCV" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="White">
             <StackLayout Padding="25">
-                <Image Source="close.png" WidthRequest="20" HeightRequest="20" HorizontalOptions="End">
+                <Image Source="close.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="End">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="CloseTaskAction"></TapGestureRecognizer>
                     </Image.GestureRecognizers>
@@ -24,11 +25,11 @@
                 <Button Style="{StaticResource ButtonStyle}" Text="Add Task" Clicked="AddTaskAction"></Button>
             </StackLayout>
         </ContentView>
-        
-        
+
+
         <StackLayout Padding="20" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Name="AllSL">
             <StackLayout Orientation="Horizontal" Margin="0,0,0,20">
-                <Label Text="New Reminder" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand"
+                <Label Text="Modify Reminder" Style="{StaticResource GeneralLabelStyle}" HorizontalOptions="CenterAndExpand"
                        FontSize="Large" FontAttributes="Bold" TextColor="Gray"></Label>
                 <Image Source="close.png" HeightRequest="40" WidthRequest="40" HorizontalOptions="End">
                     <Image.GestureRecognizers>
@@ -41,18 +42,18 @@
 
 
             <ListView  x:Name="TasksLV" HasUnevenRows="True" Header="" ItemSelected="TasksLV_ItemSelected">
-              
-                    <ListView.HeaderTemplate>
-                        <DataTemplate>
-                           
+
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+
                         <Button Text="Add a task to this location" Style="{StaticResource ButtonStyle2}" BackgroundColor="DarkBlue" TextColor="White" Clicked="ShowTaskCVAction"></Button>
-                           
-                        </DataTemplate>
-                    </ListView.HeaderTemplate>
-               
+
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+
 
                 <ListView.ItemTemplate>
-                    
+
 
                     <DataTemplate>
                         <ViewCell>
@@ -68,11 +69,14 @@
                     </DataTemplate>
 
                 </ListView.ItemTemplate>
-                
+               
             </ListView>
-            <Button Text="Create this Reminder!" Style="{StaticResource ButtonStyle}" Clicked="AddReminder"></Button>
-        
-        
-    </StackLayout>
+            <inputkit:CheckBox x:Name="ReminderCB" HorizontalOptions="Start" Text="Is this Reminder settled? Check if YES, uncheck if NO." TextFontSize="14" Color="Black" 
+                              Margin="0,2,0,5" TextColor="Black" Padding="10" Type="Check" HeightRequest="50"></inputkit:CheckBox>
+            <Button Text="Modify this Reminder!" Style="{StaticResource ButtonStyle}" Clicked="AddReminder"></Button>
+
+
+        </StackLayout>
     </AbsoluteLayout>
+
 </pages:PopupPage>

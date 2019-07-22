@@ -7,13 +7,13 @@
              x:Class="iReminder.Views.AllPage">
   <!--Pages can be added as references or inline-->
 
-    <local:MyReminderPage Title="My Reminders" IconImageSource="alarm.png"></local:MyReminderPage>
+    <local:MyReminderPage Title="My Reminders" Icon="alarm.png"></local:MyReminderPage>
 
 
-    <local:ActiveReminderPage Title="Active Reminders" IconImageSource="flash.png"></local:ActiveReminderPage>
+    <local:ActiveReminderPage Title="Active Reminders" Icon="flash.png"></local:ActiveReminderPage>
 
     
-    <local:UserSettingsPage Title="Settings" IconImageSource="gears.png"></local:UserSettingsPage>
+    <local:UserSettingsPage Title="Settings" Icon="gears.png"></local:UserSettingsPage>
     
   
   

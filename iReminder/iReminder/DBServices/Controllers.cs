@@ -1,8 +1,10 @@
 ﻿using iReminder.Interfaces;
 using iReminder.Models;
 using SQLite;
+using SQLiteNetExtensionsAsync.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -14,17 +16,13 @@ namespace iReminder.DBServices
         public SQLiteAsyncConnection dbconnection;
         public Controllers()
         {
-            dbconnection = DependencyService.Get<IReminder>().Connection();
-            
-
+            dbconnection = DependencyService.Get<IReminder>().Connection();            
         }
 
         //used to create the user table and create a user
         public async Task RegisterUser(UserModel user)
         {
-           
-            await dbconnection.InsertAsync(user);
-            
+          await dbconnection.InsertAsync(user);                     
         }
 
         //used to update a user info
@@ -38,18 +36,27 @@ namespace iReminder.DBServices
         {
             await dbconnection.DropTableAsync<Reminder>();
             await dbconnection.DropTableAsync<UserModel>();
+            await dbconnection.DropTableAsync<Tasks>();
         }
 
-        //used to create user reminder object6
+      
+
+        //used to create user reminder object
         public async Task AddReminder(Reminder reminder)
         {
-          
-            await dbconnection.InsertAsync(reminder);
-            
+            await dbconnection.InsertWithChildrenAsync(reminder, true);                    
         }
-        
+
+      
+
+        ////used to insert all elements with its children
+        //public async Task InsertAllTasks(List<Tasks> tasks)
+        //{
+        //    await dbconnection.InsertAllWithChildrenAsync(tasks,true);
+        //}
+
         //checks if the Reminder table is empty or not and peform an action
-       public async Task CheckIfDataExist(ContentView emptyCV, ContentView notEmptyCV)
+        public async Task CheckIfDataExist(ContentView emptyCV, ContentView notEmptyCV)
        {
             int data = await dbconnection.Table<Reminder>().CountAsync();
             if(data <= 0)
@@ -67,9 +74,11 @@ namespace iReminder.DBServices
         //gets all reminder object from the database
         public async Task<List<Reminder>> GetAllReminder()
         {
-           var allreminder = await dbconnection.Table<Reminder>().ToListAsync();
+            var allreminder = await dbconnection.GetAllWithChildrenAsync<Reminder>();
+            //var allreminder = await dbconnection.Table<Reminder>().OrderByDescending(r => r.ReminderId).ToListAsync();
             return allreminder;
         }
+      
 
         //gets all pending reminder from the database
         public async Task<List<Reminder>> GetActiveReminders()
@@ -79,17 +88,15 @@ namespace iReminder.DBServices
         }
 
         //deletes a reminder object from the database
-        public async Task DeleteReminder(int id)
+        public async Task DeleteReminder(Reminder reminder)
         {
-            var action = await dbconnection.DeleteAsync(id);
-            
+            await dbconnection.DeleteAsync(reminder);           
         }
 
         //updates a reminder object in the database
         public async Task UpdateReminder(Reminder reminder )
         {
-            var allreminder = await dbconnection.UpdateAsync(reminder);
-          
+            await dbconnection.InsertOrReplaceWithChildrenAsync(reminder,true);
         }
 
     }

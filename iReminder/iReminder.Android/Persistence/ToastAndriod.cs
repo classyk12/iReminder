@@ -19,7 +19,7 @@ namespace iReminder.Droid.Persistence
     {
         public void ShowMessage(string message)
         {
-            Toast.MakeText(Application.Context, message, ToastLength.Long).Show();
+            Toast.MakeText(Application.Context, message, ToastLength.Short).Show();
         }
     }
 }

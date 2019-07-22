@@ -9,13 +9,16 @@
 
             <Style x:Key="GeneralLabelStyle" TargetType="Label">
             <Setter Property="FontFamily" Value="Candarai.ttf#Candarai"></Setter>
+                <Setter Property="TextColor" Value="Black"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
             </Style>
 
             <Style x:Key="ListViewStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="Candarai.ttf#Candarai"></Setter>
-                <Setter Property="FontSize" Value="Medium"></Setter>
-                <Setter Property="TextColor" Value="Black"></Setter>
-                <Setter Property="HorizontalOptions" Value="StartAndExpand"></Setter>
+                <Setter Property="FontSize" Value="Large"></Setter>
+                <Setter Property="TextColor" Value="Gray"></Setter>
+                <Setter Property="HorizontalOptions" Value="Start"></Setter>
+                <Setter Property="FontAttributes" Value="Bold"></Setter>
             </Style>
 
 

@@ -2,56 +2,147 @@
 <ContentPage BackgroundColor="White" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-             xmlns:pagesanimation="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-         
+             xmlns:pagesanimation="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"         
              x:Class="iReminder.Views.MyReminderPage">
-
+  
 
    
-
     <AbsoluteLayout>
 
-        <ContentView  BackgroundColor="White" x:Name="EmptyContentView" 
-                    AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+        <ContentView BackgroundColor="White" x:Name="EmptyContentView" 
+                    AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" IsVisible="False">
 
             <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                 <Image x:Name="emptytodo" Source="empty.png" Aspect="AspectFit" Margin="10,0,10,0"></Image>
-                <Label  Text="No Reminders in here!" Style="{StaticResource GeneralLabelStyle}"  
+                <Label Text="No Reminders in here!" Style="{StaticResource GeneralLabelStyle}"  
                        HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" FontSize="20" Margin="0,5,0,0"></Label>
                
-                <Button Text="Create a Reminder now!" Style="{StaticResource ButtonStyle}"></Button>
+                <Button Text="Create a Reminder now!" Style="{StaticResource ButtonStyle}" Clicked="NewReminderClicked"></Button>
             </StackLayout>
 
         </ContentView>
 
+        
+        
+        <!--Used to display attached events to a particular reminder-->
+        <ContentView BackgroundColor="White" x:Name="TaskContentView" 
+                    AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" IsVisible="False" Opacity="0">
+
+            <StackLayout Padding="20">
+                <Image Source="close.png" HorizontalOptions="End" HeightRequest="50" WidthRequest="50">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CloseTaskCV"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <ListView x:Name="TasksLV" HasUnevenRows="True" ItemSelected="TasksLV_ItemSelected">
+                    <ListView.ItemTemplate>
 
 
-        <ContentView x:Name="NotEmptyContentView"  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Padding="10" Margin="0,10,0,0">
+                                    <Label Text="{Binding Events}" Style="{StaticResource ListViewStyle}"></Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
 
-            <StackLayout Margin="5,0,5,0">
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </StackLayout>
+                                                     
 
-                <StackLayout BackgroundColor="White" Margin="10" Padding="10">
-                    <Label x:Name="WelcomeLabel" BackgroundColor="White" Text="Hey Buddy!" FontAttributes="Bold" FontSize="30" 
+        </ContentView>
+
+        
+        
+        
+        
+
+
+        <ContentView x:Name="NotEmptyContentView"  AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" IsVisible="False">
+           
+                
+
+                <StackLayout BackgroundColor="White" Margin="10,10,10,3" Padding="0">
+                    <Label x:Name="WelcomeLabel" BackgroundColor="White" FontAttributes="Bold" FontSize="30" 
                       TextColor="Gray"></Label>
                     <BoxView x:Name="LineBoxView" HeightRequest="1" Color="LightGray"></BoxView>
+                <Button BackgroundColor="Black" Text="Create a new Reminder!" TextColor="White" VerticalOptions="EndAndExpand"
+                        Clicked="NewReminderClicked"></Button>
                     
-                    <ListView x:Name="ReminderLV" HasUnevenRows="True">
-                        
-                    </ListView>
+                    
+
+                    
+                <ListView x:Name="ReminderLV" HasUnevenRows="True" Header="" IsPullToRefreshEnabled="True" Refreshing="ReminderLV_Refreshing" ItemSelected="ReminderLV_ItemSelected">
+                    <ListView.HeaderTemplate>
+                        <DataTemplate>
+                            <Label Text="All your reminders are listed here boss!" HorizontalOptions="Center"></Label>
+                        </DataTemplate>
+                    </ListView.HeaderTemplate>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            
+                            <ViewCell>
+                                <Frame CornerRadius="9" Padding="10" Margin="10,10,10,5" BorderColor="LightGray" BackgroundColor="White">
+                                    <StackLayout>
+                                        <Image Source="trash.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="End">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="RemoveReminderAction"></TapGestureRecognizer>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Label Text="Reminder Location: " FontSize="Medium" FontAttributes="Bold"></Label>
+                                        <Label Text="{Binding ReminderLocation}"  MaxLines="3" Style="{StaticResource ListViewStyle}"></Label>
+                                        <BoxView  HeightRequest="1" Margin="0,8,50,4" BackgroundColor="LightGray"></BoxView  >
 
 
+                                        <StackLayout Orientation="Horizontal" Padding="3">
+                                            <Label Text="{Binding TasksCount}" Style="{StaticResource GeneralLabelStyle}"  FontAttributes="Bold" FontSize="Medium"></Label>
+                                            <Button Text="View Tasks!" BackgroundColor="DarkBlue" 
+                                                    HorizontalOptions="EndAndExpand" TextColor="White" CornerRadius="9" HeightRequest="40" Clicked="ViewTasksAction"></Button>
+                                        </StackLayout>
+                                        <BoxView  HeightRequest="1" Color="Gray" Margin="0,8,0,8"></BoxView>
+                                        
+                                        <StackLayout Spacing="15" Margin="0,0,0,5">
+                                            <Button Text="Edit Reminder!" Style="{StaticResource ButtonStyle2}" HeightRequest="40"
+                                                    CornerRadius="9" BackgroundColor="Black" TextColor="White" Clicked="UpdateReminderAction"></Button>
+                                            
+                                       
+                                        </StackLayout>
+
+                                        <StackLayout Orientation="Horizontal" Spacing="5" Padding="10,10,10,5">
+
+                                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" Spacing="5">
+                                                <Label Text="Status:" Style="{StaticResource GeneralLabelStyle}" FontAttributes="Italic"
+                                                        VerticalTextAlignment="Center" FontSize="Medium"></Label>
+                                                <Label Text="{Binding ListStatus}" TextColor="Black" Style="{StaticResource ListViewStyle}" FontAttributes="Bold"></Label>
+                                            </StackLayout>
+
+                                            <Label Text="{Binding ListDate}" TextColor="Black" Style="{StaticResource ListViewStyle}" FontAttributes="Bold"></Label>
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                   
                 </StackLayout>
-                <Button BackgroundColor="Black" Text="Create a new Reminder!" TextColor="White" VerticalOptions="End" Clicked="NewReminderClicked"></Button>
+               
 
 
-            </StackLayout>
-
+        
         </ContentView>
 
 
 
 
     </AbsoluteLayout>
-   
+    
 
 </ContentPage>

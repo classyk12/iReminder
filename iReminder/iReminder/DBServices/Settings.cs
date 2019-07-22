@@ -31,6 +31,14 @@ namespace iReminder.DBServices
             set => AppSettings.AddOrUpdateValue("username", value);            
         }
 
+        public static int ReminderId
+        {
+            get => AppSettings.GetValueOrDefault("reminderId", 0);
+
+            set => AppSettings.AddOrUpdateValue("reminderId", value);
+        }
+
+
     }
 }
 
